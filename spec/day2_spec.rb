@@ -30,4 +30,15 @@ RSpec.describe Day2 do
     expect(operator.calculate("1,9,10,3,2,3,11,0,99,30,40,50")).to eq "3500,9,10,70,2,3,11,0,99,30,40,50"
     expect(operator.calculate("1,1,1,4,99,5,6,0,99")).to eq "30,1,1,4,2,5,6,0,99"
   end
+
+  it "can find a way to get an initial state given a program" do
+    expect(operator.find_initial_state(1, "1,0,0,2,2,0,2,7")).to eq({ noun: 0, verb: 0 })
+    expect(operator.find_initial_state(2, "1,0,0,2,2,0,2,7")).to eq nil
+    expect(
+      operator.find_initial_state(1, "1,0,0,2,2,0,2,0")
+    ).to eq({ noun: 0, verb: 1 })
+    expect(
+      operator.find_initial_state(4, "1,0,0,2,2,0,2,0")
+    ).to eq({ noun: 2, verb: 2 })
+  end
 end
