@@ -1,4 +1,4 @@
-class Day4
+class Password
   def valid_password_count(range)
     range.select { |number| valid?(number.to_s) }.count
   end

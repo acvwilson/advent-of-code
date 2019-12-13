@@ -1,4 +1,4 @@
-class Day2
+class IntcodeComputer
   def calculate(program)
     codes = get_codes(program)
     codes.each_slice(4) do |slice|

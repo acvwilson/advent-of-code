@@ -1,7 +1,7 @@
-require 'day4'
+require 'day4/password'
 
-RSpec.describe Day4 do
-  let(:operator) { operator = Day4.new }
+RSpec.describe Password do
+  let(:operator) { operator = Password.new }
 
   it "knows if a string is a valid password option" do
     expect(operator.valid?("1234")).to be_falsy

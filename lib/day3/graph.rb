@@ -1,4 +1,4 @@
-class Day3
+class Graph
   attr_accessor :path_one_instructions
   attr_accessor :path_two_instructions
   attr_accessor :path_one_coordinates

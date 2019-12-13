@@ -1,17 +1,17 @@
-require 'day3'
+require 'day3/graph'
 
-RSpec.describe Day3 do
+RSpec.describe Graph do
   it "calculates the nearest intersection to the central port" do
-    operator = Day3.new("R8,U5,L5,D3", "U7,R6,D4,L4")
+    operator = Graph.new("R8,U5,L5,D3", "U7,R6,D4,L4")
     expect(operator.nearest_intersection_distance).to eq 6
 
-    operator = Day3.new(
+    operator = Graph.new(
       "R75,D30,R83,U83,L12,D49,R71,U7,L72",
       "U62,R66,U55,R34,D71,R55,D58,R83"
     )
     expect(operator.nearest_intersection_distance).to eq 159
 
-    operator = Day3.new(
+    operator = Graph.new(
       "R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51",
       "U98,R91,D20,R16,D67,R40,U7,R15,U6,R7"
     )
@@ -19,12 +19,12 @@ RSpec.describe Day3 do
   end
 
   it "calculates intersections between paths" do
-    operator = Day3.new("R3,U5", "U5,R4")
+    operator = Graph.new("R3,U5", "U5,R4")
     expect(operator.intersections).to match_array [
       Coordinate.new(3, 5),
     ]
 
-    operator = Day3.new("R8,U5,L5,D3", "U7,R6,D4,L4")
+    operator = Graph.new("R8,U5,L5,D3", "U7,R6,D4,L4")
     expect(operator.intersections).to match_array [
       Coordinate.new(3, 3),
       Coordinate.new(6, 5),
@@ -32,18 +32,18 @@ RSpec.describe Day3 do
   end
 
   it "can calculate the step distance of an intersection" do
-    operator = Day3.new("R8,U5,L5,D3", "U7,R6,D4,L4")
+    operator = Graph.new("R8,U5,L5,D3", "U7,R6,D4,L4")
     expect(operator.step_distance(Coordinate.new(3, 3))).to eq 40
     expect(operator.step_distance(Coordinate.new(6, 5))).to eq 30
   end
 
   it "calculates the shortest path distance to an intersection" do
-    operator = Day3.new("R8,U5,L5,D3", "U7,R6,D4,L4")
+    operator = Graph.new("R8,U5,L5,D3", "U7,R6,D4,L4")
     expect(operator.shortest_path_to_intersection).to eq 30
   end
 
   it "calculates the coordinates in a path to the right" do
-    operator = Day3.new("R1", "R2")
+    operator = Graph.new("R1", "R2")
     expect(
       operator.path_one_coordinates
     ).to eq [
@@ -61,7 +61,7 @@ RSpec.describe Day3 do
   end
 
   it "calculates the coordinates in a path to the left" do
-    operator = Day3.new("L1", "L2")
+    operator = Graph.new("L1", "L2")
     expect(
       operator.path_one_coordinates
     ).to eq [
@@ -79,7 +79,7 @@ RSpec.describe Day3 do
   end
 
   it "calculates the coordinates in a path up" do
-    operator = Day3.new("U1", "U2")
+    operator = Graph.new("U1", "U2")
     expect(
       operator.path_one_coordinates
     ).to eq [
@@ -97,7 +97,7 @@ RSpec.describe Day3 do
   end
 
   it "calculates the coordinates in a path down" do
-    operator = Day3.new("D1", "D2")
+    operator = Graph.new("D1", "D2")
     expect(
       operator.path_one_coordinates
     ).to eq [
@@ -115,7 +115,7 @@ RSpec.describe Day3 do
   end
 
   it "calculates the coordinates in a path with multiple instructions" do
-    operator = Day3.new("D1,L2", "U2,R1")
+    operator = Graph.new("D1,L2", "U2,R1")
     expect(
       operator.path_one_coordinates
     ).to eq [
@@ -136,7 +136,7 @@ RSpec.describe Day3 do
   end
 
   it "gets a list of instructions" do
-    operator = Day3.new("R8", "U7,R6")
+    operator = Graph.new("R8", "U7,R6")
     expect(operator.path_one_instructions.length).to be 1
     expect(operator.path_two_instructions.length).to be 2
     expect(operator.path_one_instructions).to match_array([Instruction.new("R8")])

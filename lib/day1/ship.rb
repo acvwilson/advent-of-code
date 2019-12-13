@@ -1,4 +1,4 @@
-class Day1
+class Ship
   def fuel_requirement_for(mass)
     fuel_requirement_mass = simple_fuel_requirement(mass)
     fuel_requirement_total = fuel_requirement_mass

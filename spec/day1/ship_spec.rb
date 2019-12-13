@@ -1,8 +1,8 @@
-require "day1"
+require "day1/Ship"
 
-RSpec.describe Day1 do
-  let(:operator) { Day1.new }
-  
+RSpec.describe Ship do
+  let(:operator) { Ship.new }
+
   it "calculates the fuel needed for a module's mass" do
     expect(operator.fuel_requirement_for(12)).to eq 2
     expect(operator.fuel_requirement_for(14)).to eq 2

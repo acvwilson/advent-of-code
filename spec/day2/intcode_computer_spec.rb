@@ -1,7 +1,7 @@
-require 'day2'
+require 'day2/intcode_computer'
 
-RSpec.describe Day2 do
-  let(:operator) { Day2.new }
+RSpec.describe IntcodeComputer do
+  let(:operator) { IntcodeComputer.new }
 
   it "stops on 99" do
     expect(operator.calculate("99")).to eq("99")
